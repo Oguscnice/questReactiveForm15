@@ -2,17 +2,26 @@
   <div formGroupName="credentials">
     <div>
       <label>
-        Street:
-        <input type="text" formControlName="email" />
-      </label>
-    </div>
-
-    <div>
-      <label>
-        City:
-        <input type="text" formControlName="password" />
+        Password:
+        <input type="password" formControlName="password" />
+        {{ userForm.get("credentials.password")?.errors?.['password'].rules }}
+        <div
+          *ngIf="
+            userForm.get('credentials.password')?.errors
+          "
+          class="error-msg"
+        >
+          <div
+            [hidden]="!userForm.get('credentials.password')?.errors?.['required']"
+          >
+            password is required.
+          </div>
+          <div [hidden]="!userForm.get('credentials.password')?.invalid">
+            password is invalid.
+          </div>
+        </div>
       </label>
     </div>
   </div>
-  <button type="submit" [disabled]="!userForm.valid">Inscription</button>
+  <button type="submit">Inscription</button>
 </form>
