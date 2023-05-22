@@ -1,37 +1,18 @@
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <label>
-    Nom d'utilisateur:
-    <input type="text" formControlName="username" />
-  </label>
-  <label>
-    Email:
-    <input type="text" formControlName="email" />
-  </label>
-  <label>
-    Mot de passe:
-    <input type="text" formControlName="password" />
-  </label>
-  <label>
-    Adresse (rue):
-    <input type="text" formControlName="street" />
-  </label>
-  <label>
-    Adresse (code postal):
-    <input type="text" formControlName="zip" />
-  </label>
-  <label>
-    Adresse (ville):
-    <input type="text" formControlName="city" />
-  </label>
+  <div formGroupName="credentials">
+    <div>
+      <label>
+        Street:
+        <input type="text" formControlName="email" />
+      </label>
+    </div>
+
+    <div>
+      <label>
+        City:
+        <input type="text" formControlName="password" />
+      </label>
+    </div>
+  </div>
   <button type="submit" [disabled]="!userForm.valid">Inscription</button>
 </form>
-
-<div *ngIf="submit">
-  <p>{{ newUser.username }}</p>
-  <p>{{ newUser.email }}</p>
-  <p>{{ newUser.password }}</p>
-  <p>
-    {{ newUser.adress.street }} {{ newUser.adress.zip }}
-    {{ newUser.adress.city }}
-  </p>
-</div>

@@ -9,20 +9,14 @@ import { FormBuilder } from '@angular/forms';
 export class AppComponent {
   constructor(public fb: FormBuilder) {}
 
-  submit: boolean = false;
-
   userForm = this.fb.group({
-    username: [''],
-    email: [''],
-    password: [''],
-    street: [''],
-    zip: [''],
-    city: [''],
+    credentials: this.fb.group({
+      email: [''],
+      password: [''],
+    }),
   });
 
   onSubmit() {
-    this.submit = true;
     console.log(this.userForm.value);
-    
   }
 }
