@@ -12,12 +12,8 @@ export class AppComponent {
 
   userForm = this.fb.group({
     credentials: this.fb.group({
-      email: ['', Validators.required],
-      password: [
-        '',
-       [ Validators.required,
-        passwordValidator()]
-      ],
+      email: ['', [Validators.required, passwordValidator()]],
+      password: ['', [Validators.required, passwordValidator()]],
     }),
   });
 

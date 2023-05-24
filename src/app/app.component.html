@@ -21,6 +21,29 @@
           </div>
         </div>
       </label>
+      <label>
+        Email:
+        <input type="email" formControlName="email" />
+        <p *ngIf="userForm.get('credentials.email')?.dirty">
+          {{ userForm.get("credentials.email")?.errors?.['email'].rules }}
+        </p>
+        <div
+          *ngIf="
+            userForm.get('credentials.email')?.errors &&
+            !userForm.get('credentials.email')?.pristine
+          "
+          class="error-msg"
+        >
+          <div
+            [hidden]="!userForm.get('credentials.email')?.errors?.['required']"
+          >
+            '' Email is required.
+          </div>
+          <div [hidden]="!userForm.get('credentials.email')?.invalid">
+            Email is invalid.
+          </div>
+        </div>
+      </label>
     </div>
   </div>
   <button type="submit">Inscription</button>

@@ -16,3 +16,17 @@ export function passwordValidator(): ValidationErrors | null {
     return !valid ? errors : null;
   };
 }
+export function emailValidator(
+  control: AbstractControl
+): ValidationErrors | null {
+
+  const valid = control.value.includes('@');
+
+  const errors = {
+    email: {
+      rules: "N'est pas au format email",
+    },
+  };
+
+  return !valid ? errors : null;
+}
